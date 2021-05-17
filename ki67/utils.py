@@ -104,6 +104,11 @@ def coco_to_img2annots(annotations):
         img2annots[image_id]['num_objects'][category_id] = img2annots[image_id]['num_objects'][category_id] + 1
 
     return img2annots
+    return {
+        'type': annotations['type'],
+        'categories': annotations['categories'],
+        'img2annots': img2annots
+    }
 
 def dataset_split(input_annotations, split_dictionary, max_iter=100):    
     total = sum([val for _, val in split_dictionary.items()])
@@ -114,7 +119,7 @@ def dataset_split(input_annotations, split_dictionary, max_iter=100):
     total_objects = {cat_id: 0 for cat_id in categories}
     
     # Mapping from an image into its annotations
-    img2annots = coco_to_img2annots(input_annotations)    
+    img2annots = coco_to_img2annots(input_annotations)['img2annots']
     
     for key, val in img2annots.items():
         for cat_id, cat_n in val['num_objects'].items():
