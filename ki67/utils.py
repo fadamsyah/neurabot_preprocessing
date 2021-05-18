@@ -5,6 +5,7 @@ import os
 import xmltodict
 import math
 import random
+import json
 from copy import deepcopy
 
 # Open an xml file and convert it into the dictionary format
