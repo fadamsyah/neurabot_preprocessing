@@ -259,3 +259,28 @@ def dataset_analysis(annotations, display=True):
         print('-----------------------------------')
             
     return results
+
+def save_json_file(files, path, indent=4):
+    json_object = json.dumps(files, indent = indent) 
+
+    # Writing to saved_path_json
+    with open(path, "w") as outfile: 
+        outfile.write(json_object) 
+        
+def check_image_id_duplication(images):
+    image_id = {}
+    for image in images:
+        id = image['id']
+        if id in image_id:
+            return True
+        image_id[id] = 1
+    return False
+
+def check_annotation_id_duplication(annotations):
+    annotation_id = {}
+    for annotation in annotations:
+        id = annotation['id']
+        if id in annotation_id:
+            return True
+        annotation_id[id] = 1
+    return False
