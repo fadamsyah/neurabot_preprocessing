@@ -64,8 +64,8 @@ def convert2coco(base):
         size = ann['size']
         image = {
             "file_name": ann['filename'],
-            "height":size['height'] ,
-            "width": size['width'],
+            "height": int(size['height']),
+            "width": int(size['width']),
             "id": img_id
         }
         annotations["images"].append(image)
