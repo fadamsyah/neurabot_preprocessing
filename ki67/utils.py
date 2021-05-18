@@ -261,6 +261,13 @@ def dataset_analysis(annotations, display=True):
             
     return results
 
+def read_json(path):
+    f = open(path,)
+    data = json.load(f)
+    f.close()
+
+    return data
+
 def save_json_file(files, path, indent=4):
     json_object = json.dumps(files, indent = indent) 
 
